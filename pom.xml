@@ -85,11 +85,26 @@
                 </executions>
 
                 <configuration>
+
+                    <!-- NVD API Key from Environment Variable -->
+                    <nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
+
+                    <!-- Report Output Directory -->
                     <outputDirectory>
                         ${project.build.directory}/dependency-check-reports
                     </outputDirectory>
-                    <format>HTML</format>
+
+                    <!-- Report Format -->
+                    <formats>
+                        <format>HTML</format>
+                        <format>JSON</format>
+                    </formats>
+
+                    <!-- Optional -->
+                    <failBuildOnCVSS>7</failBuildOnCVSS>
+
                 </configuration>
+
             </plugin>
 
         </plugins>
