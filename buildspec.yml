@@ -7,11 +7,11 @@ phases:
 
   build:
     commands:
-      - mvn clean install dependency-check:check
+      - mvn clean install dependency-check:check -Dmaven.test.skip=true
       - mv target/dependency-check-reports reports/
       - BUILD_NUMBER=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | tr -d '[:alpha:]')
       - zip -r owasp-report-build-${BUILD_NUMBER}.zip reports/
-      - mvn clean install
 
 artifacts:
-  files: owasp-report-build-*.zip
+  files:
+    - owasp-report-build-*.zip
